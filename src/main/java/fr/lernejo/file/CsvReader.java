@@ -110,7 +110,7 @@ public class CsvReader {
     private static void printResult(double result, String unit, String aggregationType) {
         String formattedResult;
         if (result >= 10_000_000) {
-            formattedResult = String.format(Locale.US, "%.7E", result)
+            formattedResult = String.format(Locale.US, "%.8E", result)
                 .replaceAll("E(\\d)$", "E+$1")
                 .replaceAll("0+E", "E")
                 .replaceAll("\\.E", "E");
