@@ -1,0 +1,4 @@
+latitude,longitude,elevation,utc_offset_seconds,timezone,timezone_abbreviation
+52.54833,13.407822,38.0,0,GMT,GMT
+time,temperature_2m (°C),rain (mm),pressure_msl (hPa),cloud_cover (%),wind_speed_10m (km/h),soil_temperature_0_to_7cm (°C),is_day (),direct_normal_irradiance_instant (W/m²)
+2010-01-01T00:00,-2.6,0.00,996.9,100,16.0,-0.6,0,0.0

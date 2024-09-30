@@ -107,8 +107,10 @@ public class CsvReader {
 
     private static void printResult(double result, String unit, String aggregationType) {
         String formattedResult;
-        if (result >= 1_000_000) {
+        if (result >= 10_000_000) {
             formattedResult = String.format(Locale.US, "%.8E", result).replace("E+0", "E");
+        } else if (result >= 1_000_000) {
+            formattedResult = String.format(Locale.US, "%.1f", result);
         } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
             formattedResult = String.format(Locale.US, "%.1f", result);
         } else if (aggregationType.equals("AVG")) {
