@@ -110,13 +110,16 @@ public class CsvReader {
     private static void printResult(double result, String unit, String aggregationType) {
         String formattedResult;
         if (result >= 10_000_000) {
-            formattedResult = String.format(Locale.US, "%.8E", result).replace("E+0", "E");
+            formattedResult = String.format(Locale.US, "%.7E", result)
+                .replaceAll("E(\\d)$", "E+$1")
+                .replaceAll("0+E", "E")
+                .replaceAll("\\.E", "E");
         } else if (result >= 1_000_000) {
             formattedResult = String.format(Locale.US, "%.1f", result);
         } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
             formattedResult = String.format(Locale.US, "%.1f", result);
         } else if (aggregationType.equals("AVG")) {
-            BigDecimal bd = new BigDecimal(result);
+            BigDecimal bd = new BigDecimal(String.valueOf(result));
             bd = bd.setScale(15, RoundingMode.HALF_UP);
             formattedResult = String.format(Locale.US, "%.15f", bd.doubleValue());
         } else {
