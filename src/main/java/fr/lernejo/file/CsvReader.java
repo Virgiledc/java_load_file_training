@@ -105,10 +105,14 @@ public class CsvReader {
     }
 
     private static void printResult(double result, String unit, String aggregationType) {
-        String format = "%.15f %s%n";
+        String format;
         if (result >= 1_000_000) {
-            format = "%.1e %s%n";
-        } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
+            if (result < 10_000_000) {
+                format = "%.1f %s%n";
+            } else {
+                format = "%.7E %s%n";
+            }
+        } else if (aggregationType.equals("SUM")) {
             format = "%.1f %s%n";
         } else {
             format = "%.15f %s%n";
