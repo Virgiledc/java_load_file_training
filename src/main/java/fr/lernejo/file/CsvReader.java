@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Function;
+import java.util.Locale;
 
 public class CsvReader {
     public static void main(String[] args) {
