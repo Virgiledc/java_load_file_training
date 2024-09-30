@@ -15,4 +15,5 @@ class SampleTest {
             .as("Addition of 2 and 2")
             .isEqualTo(4);
     }
+
 }

@@ -33,7 +33,7 @@ public class CsvReader {
             }
 
             double result = aggregate(br, startDate, endDate, columnIndex, selector, aggregationType, parseValue);
-            System.out.printf("%.2f %s%n", result, unit);
+            printResult(result, unit, aggregationType);
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
             System.exit(1);
@@ -102,5 +102,17 @@ public class CsvReader {
             case "MAX": return max;
             default: throw new IllegalArgumentException("Invalid aggregation type");
         }
+    }
+
+    private static void printResult(double result, String unit, String aggregationType) {
+        String format;
+        if (result >= 1_000_000) {
+            format = "%.1e %s%n";
+        } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
+            format = "%.1f %s%n";
+        } else {
+            format = "%.1f %s%n";
+        }
+        System.out.printf(format, result, unit);
     }
 }
