@@ -114,7 +114,9 @@ public class CsvReader {
         } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
             formattedResult = String.format(Locale.US, "%.1f", result);
         } else if (aggregationType.equals("AVG")) {
-            formattedResult = String.format(Locale.US, "%.15f", result);
+            BigDecimal bd = new BigDecimal(result);
+            bd = bd.setScale(15, RoundingMode.HALF_UP);
+            formattedResult = String.format(Locale.US, "%.15f", bd.doubleValue());
         } else {
             formattedResult = String.format(Locale.US, "%.1f", result);
         }
