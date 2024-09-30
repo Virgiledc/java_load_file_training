@@ -105,7 +105,7 @@ public class CsvReader {
     }
 
     private static void printResult(double result, String unit, String aggregationType) {
-        String format;
+        String format = "%.15f %s%n";
         if (result >= 1_000_000) {
             format = "%.1e %s%n";
         } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
