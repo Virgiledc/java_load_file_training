@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Function;
 import java.util.Locale;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class CsvReader {
     public static void main(String[] args) {
