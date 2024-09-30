@@ -105,18 +105,16 @@ public class CsvReader {
     }
 
     private static void printResult(double result, String unit, String aggregationType) {
-        String format;
+        String formattedResult;
         if (result >= 1_000_000) {
-            if (result < 10_000_000) {
-                format = "%.1f %s%n";
-            } else {
-                format = "%.7E %s%n";
-            }
-        } else if (aggregationType.equals("SUM")) {
-            format = "%.1f %s%n";
+            formattedResult = String.format(Locale.US, "%.8E", result).replace("E+0", "E");
+        } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
+            formattedResult = String.format(Locale.US, "%.1f", result);
+        } else if (aggregationType.equals("AVG")) {
+            formattedResult = String.format(Locale.US, "%.15f", result);
         } else {
-            format = "%.15f %s%n";
+            formattedResult = String.format(Locale.US, "%.1f", result);
         }
-        System.out.printf(format, result, unit);
+        System.out.printf("%s %s%n", formattedResult, unit);
     }
 }
