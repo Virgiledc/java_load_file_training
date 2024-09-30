@@ -111,7 +111,7 @@ public class CsvReader {
         } else if (aggregationType.equals("MIN") || aggregationType.equals("MAX")) {
             format = "%.1f %s%n";
         } else {
-            format = "%.1f %s%n";
+            format = "%.15f %s%n";
         }
         System.out.printf(format, result, unit);
     }
